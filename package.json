@@ -9,9 +9,7 @@
     "heroku-prebuild": "yarn install --production=false"
   },
   "version": "0.1.0",
-  "engines": {
-  "node": "9.3.0"
-},
+
   "devDependencies": {
     "webpack-dev-server": "^3.9.0"
   }
