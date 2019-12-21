@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<!-- <h1>THE CONTROLLER IS FIRING? <%= @firing %></h1> -->
+
+<h1>Gothmas 2019 Song List</h1>
+
+<%= form_tag songs_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<% if !(params[:search].nil?) then %>
+  <% if @songs.empty? %>
+    <p> No results. If you're sure we should have it, try being more specific.</p>
+  <% else  %>
+    <table class="center">
+      <% @songs.each do |search_song| %>
+
+        <tr>
+          <td><%= search_song.artist %></td>
+          <td><%= search_song.title %></td>
+          <td><%= search_song.karafun_id %></td>
+        </tr>
+
+      <% end %>
+    </table>
+  <% end %>
+<% end %>
+
+<h3>Don't know what to sing? Here's five random songs. They probably suck.</h3>
+
+<table class="center">
+<!--  <thead>
+    <tr>
+      <th>Karafun</th>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Artist</th>
+      <th colspan="10"></th>
+    </tr>
+  </thead>-->
+
+  <tbody>
+    <% count = 0 %>
+    <% songs = Song.limit(5).order("RANDOM()") %>
+    <% songs.each do |song| %>
+      <tr>
+        <td><%= song.artist %></td>
+        <td><%= song.title %></td>
+        <td><%= song.karafun_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
