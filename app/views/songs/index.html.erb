@@ -3,12 +3,13 @@
 
 <!-- <h1>THE CONTROLLER IS FIRING? <%= @firing %></h1> -->
 
-<h1>Gothmas 2019 Song List</h1>
+<!-- <h1>Gothmas 2019 Song List</h1> -->
+<%= image_tag "title.png", class: "title"%>
 
 <%= form_tag songs_path, :method => 'get' do %>
   <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= text_field_tag :search, params[:search], class: "text-input" %>
+    <%= submit_tag "Search", :name => nil, class: "submit-button" %>
   </p>
 <% end %>
 
